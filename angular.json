@@ -3,29 +3,29 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "AngBlog": {
+    "BlogFront": {
       "projectType": "application",
       "schematics": {},
-      "root": "",
-      "sourceRoot": "src",
+      "root": "projects/blog-front",
+      "sourceRoot": "projects/blog-front/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ang-blog",
-            "index": "src/index.html",
-            "main": "src/main.ts",
+            "outputPath": "dist/blog-front",
+            "index": "projects/blog-front/src/index.html",
+            "main": "projects/blog-front/src/main.ts",
             "polyfills": [
               "zone.js"
             ],
-            "tsConfig": "tsconfig.app.json",
+            "tsConfig": "projects/blog-front/tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/blog-front/src/favicon.ico",
+              "projects/blog-front/src/assets"
             ],
             "styles": [
-              "src/styles.css",
+              "projects/blog-front/src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
@@ -61,10 +61,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "AngBlog:build:production"
+              "browserTarget": "BlogFront:build:production"
             },
             "development": {
-              "browserTarget": "AngBlog:build:development"
+              "browserTarget": "BlogFront:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -72,7 +72,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "AngBlog:build"
+            "browserTarget": "BlogFront:build"
           }
         },
         "test": {
@@ -82,13 +82,105 @@
               "zone.js",
               "zone.js/testing"
             ],
-            "tsConfig": "tsconfig.spec.json",
+            "tsConfig": "projects/blog-front/tsconfig.spec.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/blog-front/src/favicon.ico",
+              "projects/blog-front/src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "projects/blog-front/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "BlogBack": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/blog-back",
+      "sourceRoot": "projects/blog-back/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/blog-back",
+            "index": "projects/blog-back/src/index.html",
+            "main": "projects/blog-back/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/blog-back/tsconfig.app.json",
+            "assets": [
+              "projects/blog-back/src/favicon.ico",
+              "projects/blog-back/src/assets"
+            ],
+            "styles": [
+              "projects/blog-back/src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "BlogBack:build:production"
+            },
+            "development": {
+              "browserTarget": "BlogBack:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "BlogBack:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/blog-back/tsconfig.spec.json",
+            "assets": [
+              "projects/blog-back/src/favicon.ico",
+              "projects/blog-back/src/assets"
+            ],
+            "styles": [
+              "projects/blog-back/src/styles.css"
             ],
             "scripts": []
           }
