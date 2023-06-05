@@ -1,6 +1,7 @@
 header {
     height: 100px;
-    
+   background-color: var(--navbar-footer-color);
+
     .logo {
         font-size: 1.5em;
     }

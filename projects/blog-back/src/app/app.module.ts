@@ -10,20 +10,27 @@ import { environment } from '../environments/environment.development';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-
-
+import { CategoriesComponent } from './components/main/categories/categories.component';
+import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
     DashboardComponent,
+    CategoriesComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FormsModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
