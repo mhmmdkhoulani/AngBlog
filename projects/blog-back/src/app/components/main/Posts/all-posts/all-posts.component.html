@@ -10,5 +10,42 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-12 my-5">
+            <div class="card shadow-effect">
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Post Image</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Excerpt</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Actions</th>
+                                
+                              </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let post of posts; let i = index">
+                                <td>{{i + 1}}</td>
+                                <td><img [src]="post.data.postImagePath" width="80"/></td>
+                                <td>{{post.data.title}}</td>
+                                <td>{{post.data.excerpt}}</td>
+                                <td>{{post.data.category.name}}</td>
+                                <td>{{post.data.createdAt.toMillis() | date}}</td>
+                                
+
+                                <td>
+                                    <button type="button" class="btn btn-info btn-sm text-white" routerLink="/posts/new" [queryParams]="{id: post.id}">Edit</button> | 
+                                    <button type="button" class="btn btn-danger btn-sm" (click)="onDelete(post.id,post.data.postImagePath)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

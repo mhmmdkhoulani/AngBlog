@@ -10,6 +10,7 @@ import { environment } from '../environments/environment.development';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { CategoriesComponent } from './components/main/categories/categories.component';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
@@ -27,13 +28,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     DashboardComponent,
     CategoriesComponent,
     AllPostsComponent,
-    NewPostComponent
+    NewPostComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
+    AngularFireStorageModule,
     FormsModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
