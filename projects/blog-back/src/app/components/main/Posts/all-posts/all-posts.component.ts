@@ -24,4 +24,9 @@ export class AllPostsComponent implements OnInit {
   onDelete(postId: string, imagePath: string) {
     this.postService.deleteData(imagePath, postId);
   }
+
+  isFeatured(id: string, featured: boolean) {
+    const featuredData = { isFeatured: featured };
+    this.postService.isFeatured(id, featuredData);
+  }
 }

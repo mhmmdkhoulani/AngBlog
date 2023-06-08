@@ -40,7 +40,10 @@
                                 <td>
                                     <button type="button" class="btn btn-info btn-sm text-white" routerLink="/posts/new" [queryParams]="{id: post.id}">Edit</button> | 
                                     <button type="button" class="btn btn-danger btn-sm" (click)="onDelete(post.id,post.data.postImagePath)">Delete</button>
-                                </td>
+                                
+                                    <button *ngIf="!post.data.isFeatured" type="button" class="btn btn-success btn-sm text-white" routerLink="/posts/new" [queryParams]="{id: post.id}" (click)="isFeatured(post.id, true)">Mark featured</button> | 
+                                    <button *ngIf="post.data.isFeatured" type="button" class="btn btn-warning btn-sm" (click)="isFeatured(post.id, false)">Remove featured</button>
+                               </td>
                             </tr>
                         </tbody>
                       </table>

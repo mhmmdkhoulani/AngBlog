@@ -79,4 +79,17 @@ export class PostService {
       }).catch(err => { console.log(err) });
     });
   }
+
+  isFeatured(postId: string, data: any) {
+
+    this.afs.collection('posts').doc(postId).update(data).then(docRef => {
+      if (data.isFeatured) {
+        this.toastr.success('Post marked as featured.');
+      } else {
+        this.toastr.success('Post marked as not featured');
+
+      }
+      this.router.navigate(['/posts']);
+    }).catch(err => { console.log(err) });
+  }
 }
