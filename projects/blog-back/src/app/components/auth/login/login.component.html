@@ -1,0 +1,57 @@
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="card p-5 shadow-effect bg-secondary-theme">
+            <div class="card-body">
+                <div class="text-center">
+                    <h3 class="text-theme-primary">Login</h3>
+                    <p>Please login to your admin account.</p>
+                </div>
+
+                <form #loginForm = 'ngForm' (ngSubmit)="onSubmit(loginForm)">
+                    <div class="form-group mb-3">
+                        <input 
+                        type="email" 
+                        class="form-control" 
+                        placeholder="Enter your email" 
+                        name='email'
+                        #email = 'ngModel'
+                        ngModel 
+                        required
+                        email
+                        [ngClass]="{'is-invalid' :email.touched && email.invalid }"
+                        >
+                        <div *ngIf="email.touched && email.invalid" >
+                            <div *ngIf="email.errors?.email" class="form-text text-danger text-start">Please enter a valid email address</div>
+                        <div *ngIf="email.errors?.required "class="form-text text-danger text-start">Email is required</div>
+
+                        </div>
+                    </div>
+                    <div class="form-group  mb-3">
+                        <input 
+                        type="password" 
+                        class="form-control" 
+                        placeholder="Enter your password" 
+                        name="password"
+                        #password ='ngModel'
+                        ngModel 
+                        required=""
+                        
+                        [ngClass]="{'is-invalid' :password.touched && password.invalid }">
+                        <div *ngIf="password.touched && password.invalid" class="form-text text-danger text-start">Password is required</div>
+                        
+                    </div>
+                    <div class="d-grid">
+                        <button class="btn btn-info btn-theme " [disabled]="loginForm.invalid">Login</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3"></div>
+
+  </div>
+</div>
