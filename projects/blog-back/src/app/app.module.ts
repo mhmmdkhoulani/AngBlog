@@ -11,6 +11,7 @@ import { environment } from '../environments/environment.development';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { CategoriesComponent } from './components/main/categories/categories.component';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
@@ -38,6 +39,7 @@ import { LoginComponent } from './components/auth/login/login.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireStorageModule,
+    AngularFireAuthModule,
     FormsModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
