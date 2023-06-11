@@ -22,6 +22,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/auth/login/login.component';
+import { SubscriptionComponent } from './components/main/subscription/subscription.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import { LoginComponent } from './components/auth/login/login.component';
     AllPostsComponent,
     NewPostComponent,
     LoginComponent,
+    SubscriptionComponent,
   ],
   imports: [
     BrowserModule,
