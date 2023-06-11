@@ -16,8 +16,6 @@ export class HeaderComponent implements OnInit {
     let currentUser = JSON.parse(localStorage.getItem('user') || '{}');
     this.email = currentUser.email
     this.loggedIn$ = this.authService.isLoggedIn();
-
-
   }
 
   logout() {

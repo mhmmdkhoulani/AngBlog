@@ -9,14 +9,16 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class AuthService {
   loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-
+  isLoggedInGuard: boolean = false;
   constructor(private afauth: AngularFireAuth, private toastr: ToastrService, private router: Router) { }
 
   login(email: string, password: string) {
     this.afauth.signInWithEmailAndPassword(email, password).then(logRef => {
       this.toastr.success('Logged In Successfully.');
-      this.router.navigate(['/']);
       this.loggedIn.next(true);
+      this.isLoggedInGuard = true;
+      this.router.navigate(['/']);
+
       this.loadUser();
     }).catch(err => {
       console.log(err);
@@ -34,14 +36,20 @@ export class AuthService {
     this.afauth.signOut().then(() => {
       this.toastr.success('User Logged Out Successfully.');
       this.loggedIn.next(false);
-      this.router.navigate(['/login']);
+      this.isLoggedInGuard = false;
       localStorage.removeItem('user');
+
+      this.router.navigate(['/login']);
 
     })
   }
 
   isLoggedIn() {
     return this.loggedIn.asObservable();
+  }
+
+  isAuthenticate(): boolean {
+    return this.isLoggedInGuard;
   }
 
 }
