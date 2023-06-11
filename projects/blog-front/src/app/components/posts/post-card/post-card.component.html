@@ -1,19 +1,16 @@
-<div class="card shadow-effect mb-3">
+<div class="card shadow-effect mb-3" *ngIf="post">
     <img
-        src="https://imgv3.fotor.com/images/blog-cover-image/part-blurry-image.jpg"
+        src="{{post.postImagePath}}"
         alt="post-image" class="card-img-top" />
     <div class="card-body">
-        <small class="bg-light text-danger text-center me-3">Design </small>
+        <small class="bg-light text-danger text-center me-3"> {{post.category.name}} </small>
         <small class="bg-light text-success text-center me-3">Featured </small>
-        <small class="bg-light text-info text-center me-3">Views - 122,44
+        <small class="bg-light text-info text-center me-3">Views - {{post.views}}
         </small>
 
-        <h5 class="card-title mt-4">How to start your blog</h5>
-        <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing
-            elit. A ab esse
-            ut.</p>
-        <small class="bg-light text-warning text-center me-3">Last Update - SEP
-            20, 2023
+        <h5 class="card-title mt-4">{{post.title}}</h5>
+        <p class="card-text">{{post.content}}</p>
+        <small class="bg-light text-warning text-center me-3">Last Update - {{post.createdAt.toMillis() | date}}
         </small>
     </div>
 </div>

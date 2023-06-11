@@ -1,23 +1,15 @@
 <div class="hero ">
     <div class="container">
-        <h1 class="text-uppercase">General Category</h1>
+        <h1 class="text-uppercase">{{categoryName}}</h1>
         <p>Lorem ipsum dolor sit amet consectetur.</p>
     </div>
 </div>
 
 <section class="container py-5">
     <div class="row">
-        <div class="col-md-4">
-            <app-post-card></app-post-card>
+        <div class="col-md-4" *ngFor="let post of posts">
+            <app-post-card [postData]="post"></app-post-card>
         </div>
-        <div class="col-md-4">
-            <app-post-card></app-post-card>
-        </div>
-        <div class="col-md-4">
-            <app-post-card></app-post-card>
-        </div>
-        <div class="col-md-4">
-            <app-post-card></app-post-card>
-        </div>
+       
     </div>
 </section>
